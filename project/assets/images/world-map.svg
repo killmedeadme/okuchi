@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500">
+    <!-- 日本 -->
+    <path data-country="日本" d="M800,150 L810,150 L810,160 L800,160 Z" fill="#e0e0e0"/>
+    
+    <!-- 韓国 -->
+    <path data-country="韓国" d="M790,140 L800,140 L800,150 L790,150 Z" fill="#e0e0e0"/>
+    
+    <!-- 中国 -->
+    <path data-country="中国" d="M750,120 L800,120 L800,160 L750,160 Z" fill="#e0e0e0"/>
+    
+    <!-- タイ -->
+    <path data-country="タイ" d="M720,200 L740,200 L740,220 L720,220 Z" fill="#e0e0e0"/>
+    
+    <!-- ベトナム -->
+    <path data-country="ベトナム" d="M740,190 L760,190 L760,210 L740,210 Z" fill="#e0e0e0"/>
+    
+    <!-- インドネシア -->
+    <path data-country="インドネシア" d="M700,220 L720,220 L720,240 L700,240 Z" fill="#e0e0e0"/>
+    
+    <!-- マレーシア -->
+    <path data-country="マレーシア" d="M710,210 L730,210 L730,230 L710,230 Z" fill="#e0e0e0"/>
+    
+    <!-- シンガポール -->
+    <path data-country="シンガポール" d="M715,225 L725,225 L725,235 L715,235 Z" fill="#e0e0e0"/>
+    
+    <!-- フィリピン -->
+    <path data-country="フィリピン" d="M760,190 L780,190 L780,210 L760,210 Z" fill="#e0e0e0"/>
+    
+    <!-- アメリカ -->
+    <path data-country="アメリカ" d="M100,100 L300,100 L300,200 L100,200 Z" fill="#e0e0e0"/>
+    
+    <!-- カナダ -->
+    <path data-country="カナダ" d="M100,50 L300,50 L300,100 L100,100 Z" fill="#e0e0e0"/>
+    
+    <!-- イギリス -->
+    <path data-country="イギリス" d="M400,80 L420,80 L420,100 L400,100 Z" fill="#e0e0e0"/>
+    
+    <!-- フランス -->
+    <path data-country="フランス" d="M420,90 L440,90 L440,110 L420,110 Z" fill="#e0e0e0"/>
+    
+    <!-- イタリア -->
+    <path data-country="イタリア" d="M440,100 L460,100 L460,120 L440,120 Z" fill="#e0e0e0"/>
+    
+    <!-- スペイン -->
+    <path data-country="スペイン" d="M400,110 L420,110 L420,130 L400,130 Z" fill="#e0e0e0"/>
+    
+    <!-- ドイツ -->
+    <path data-country="ドイツ" d="M430,90 L450,90 L450,110 L430,110 Z" fill="#e0e0e0"/>
+    
+    <!-- オーストラリア -->
+    <path data-country="オーストラリア" d="M750,250 L850,250 L850,300 L750,300 Z" fill="#e0e0e0"/>
+</svg> 

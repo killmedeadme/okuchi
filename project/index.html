@@ -5,6 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>おくちのなか海外旅行部</title>
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* 震えるアニメーション */
+        @keyframes shake {
+            0% { transform: translate(0); }
+            25% { transform: translate(-2px, 0); }
+            50% { transform: translate(2px, 0); }
+            75% { transform: translate(-2px, 0); }
+            100% { transform: translate(0); }
+        }
+
+        .shaking {
+            animation: shake 0.5s infinite;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -334,7 +348,7 @@
         countdownElement.classList.add('countdown');
         headerIcon.parentElement.appendChild(countdownElement);
 
-        for (let i = 5; i >= 1; i--) {
+        for (let i = 3; i >= 1; i--) {
             countdownElement.textContent = i;
             await new Promise(resolve => setTimeout(resolve, 1000));
             // 新しいカウントダウン数字のためにアニメーションをリセット
@@ -434,6 +448,24 @@
         yahooLink.href = `https://search.yahoo.co.jp/search?p=${searchQuery}`;
         recipeLink.href = `https://www.google.com/search?q=${recipeQuery}`;
     }
+    </script>
+       <script>
+        // ... existing code ...
+        let inactivityTimer;
+ 
+        function resetInactivityTimer() {
+    clearTimeout(inactivityTimer);
+    const headerIcon = document.querySelector('.header-icon');
+    // アニメーションを停止しないように変更
+    inactivityTimer = setTimeout(() => {
+        headerIcon.classList.add('shaking'); // アニメーションを開始
+    }, 1000); // 2秒間の非活動後にアニメーションを開始
+        }
+ 
+        // イベントリスナーを追加
+        document.addEventListener('mousemove', resetInactivityTimer);
+        document.addEventListener('keydown', resetInactivityTimer);
+        resetInactivityTimer(); // 初期化
     </script>
 </body>
 </html> 

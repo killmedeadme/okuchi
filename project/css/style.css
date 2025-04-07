@@ -14,7 +14,7 @@ body {
 
 header {
     background-color: #f5f5f5;
-    color: #333;
+    color: #a59393;
     text-align: center;
     padding: 1rem 1rem;
     position: relative;
@@ -23,7 +23,22 @@ header {
 header h1 {
     font-size: 0.7rem;
     margin-bottom: 1%;
-    color: #333;
+    color: #a59393;
+}
+
+h2 {
+    font-family: 'Book Antiqua', serif; /* Times New Romanを指定 */
+    color: #a59393; /* 色指定 */
+    font-size: 24px; /* フォントサイズを調整 */
+    line-height: 1.5; /* 行間を調整 */
+}
+
+.sub-title {
+    font-family: 'Book Antiqua', serif; /* Times New Romanを指定 */
+    color: #a59393; /* 色指定 */
+    font-size: 24px; /* フォントサイズを調整 */
+    line-height: 1.5; /* 行間を調整 */
+    margin-bottom: 20px; /* 下部に隙間を追加（20pxの例） */
 }
 
 header img {

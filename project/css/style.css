@@ -51,7 +51,7 @@ header img.header-icon {
 }
 
 .header-icon.spinning {
-    animation: spin 5s linear;
+    animation: spin 3s linear;
 }
 
 /* メインコンテンツ */

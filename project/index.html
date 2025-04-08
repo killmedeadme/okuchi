@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>おくちのなか海外旅行部</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         /* 震えるアニメーション */
         @keyframes shake {
@@ -35,15 +36,30 @@
 
         <section id="result-section" class="hidden">
             <div id="country-info"></div>
-            <div class="button-group">
+                        <div class="button-group">
                 <button id="reject-button" class="reject-button">もう一度回す</button>
             </div>
             <div class="country-list">
                 <h3>国一覧</h3>
+                <button id="open-modal-button">訪れた国を記録する</button>
                 <select id="country-select" class="country-select">
                     <option value="">国を選択してください</option>
                 </select>
             </div>
+            <!-- モーダルのHTML -->
+<div id="country-modal" class="modal hidden">
+    <div class="modal-content">
+        <h2>訪れた国を記録する</h2>
+        <div id="count-summary">訪問済み: 0国 / 総国数: 0国</div>
+        <div id="country-list">
+            <!-- 国のリストをここに追加 -->
+        </div>
+        <div class="modal-buttons">
+            <button id="save-button" class="button">保存</button>
+            <button class="button close-button">閉じる</button>
+        </div>
+    </div>
+</div>
         </section>
 
         <section id="restaurant-section" class="hidden">
@@ -325,6 +341,7 @@
                    target="_blank" 
                    class="country-link">
                     ${country.country}
+                    <i class="fa-solid fa-plane" style="margin-left: 5px;"></i>
                 </a>
             </h2>
             <p>首都: ${country.capital}（言語: ${country.language}）</p>
@@ -382,6 +399,7 @@
                    target="_blank" 
                    class="country-link">
                     ${selectedCountry.country}
+                    <i class="far fa-paper-plane"></i>
                 </a>
             </h2>
             <p>首都: ${selectedCountry.capital}（言語: ${selectedCountry.language}）</p>
@@ -468,5 +486,6 @@
         document.addEventListener('keydown', resetInactivityTimer);
         resetInactivityTimer(); // 初期化
     </script>
-</body>
+        <script src="js/main.js"></script> <!-- ここに配置 -->
+    </body>
 </html> 

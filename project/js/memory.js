@@ -1,6 +1,25 @@
 // GASウェブアプリのURL (ステップ3でコピーしたURLに置き換えてください)
 const GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwx7LOM6DuDUNA07TrBoxQmne-YVrysWt1lPQixjrDvfJ5mGmpobeg-ddQPZ6XhjVxL/exec'; // ★★★ 必ず書き換えてください ★★★
 
+// 日付を yyyy-MM-dd 形式にフォーマットするヘルパー関数
+function formatDateToYyyyMmDd(dateString) {
+  if (!dateString) return '';
+  try {
+    const date = new Date(dateString);
+    if (isNaN(date.getTime())) {
+        console.warn("Invalid date string received:", dateString);
+        return '';
+    }
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  } catch (e) {
+      console.error("Error formatting date:", dateString, e);
+      return '';
+  }
+}
+
 document.addEventListener('DOMContentLoaded', async function() {
     // DOM要素の取得
     const countryGrid = document.querySelector('.country-grid');
@@ -145,15 +164,15 @@ document.addEventListener('DOMContentLoaded', async function() {
         countryGrid.innerHTML = '';
 
         // 各国のアイテムを作成
-        sortedCountries.forEach(countryInfo => { // 変数名を country から countryInfo に変更（衝突回避）
+        sortedCountries.forEach(countryInfo => {
              if (!countryInfo || !countryInfo.country) return; // データ形式チェック
 
             const item = document.createElement('div');
-            const countryName = countryInfo.country; // 国名を保持
-            // visitedDataFromGAS を参照してクラスを設定
+            const countryName = countryInfo.country;
             item.className = 'country-item' + (visitedDataFromGAS[countryName] ? ' visited' : '');
 
-            const visitDate = visitedDataFromGAS[countryName] || ''; // 日付を取得、なければ空文字
+            const rawVisitDate = visitedDataFromGAS[countryName] || ''; // 元の日付データを取得
+            const visitDate = formatDateToYyyyMmDd(rawVisitDate); // yyyy-MM-dd形式にフォーマット
 
             item.innerHTML = `
                 <span class="visited-mark">●</span>

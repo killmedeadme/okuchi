@@ -107,8 +107,13 @@
 }
 
 .close-button {
-    width: 100%;
-    padding: 15px 30px;
+    width: auto;
+    min-width: 180px;
+    padding: 10px 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
     border: none;
     border-radius: 4px;
     font-size: 16px;
@@ -220,4 +225,9 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+.header-icon {
+    margin-right: 10px;
+    color: #555;
 } 

@@ -2,9 +2,7 @@
 const countries = [
         // アジア (48カ国)
         { country: "アフガニスタン", capital: "カブール", language: "ダリー語" },
-        { country: "アゼルバイジャン", capital: "バクー", language: "アゼルバイジャン語" },
         { country: "アラブ首長国連邦", capital: "アブダビ", language: "アラビア語" },
-        { country: "アルメニア", capital: "エレバン", language: "アルメニア語" },
         { country: "イエメン", capital: "サナア", language: "アラビア語" },
         { country: "イスラエル", capital: "エルサレム", language: "ヘブライ語" },
         { country: "イラク", capital: "バグダッド", language: "アラビア語" },
@@ -16,7 +14,6 @@ const countries = [
         { country: "カザフスタン", capital: "アスタナ", language: "カザフ語" },
         { country: "カタール", capital: "ドーハ", language: "アラビア語" },
         { country: "カンボジア", capital: "プノンペン", language: "クメール語" },
-        { country: "キプロス", capital: "ニコシア", language: "ギリシャ語" },
         { country: "キルギス", capital: "ビシュケク", language: "キルギス語" },
         { country: "クウェート", capital: "クウェートシティ", language: "アラビア語" },
         { country: "サウジアラビア", capital: "リヤド", language: "アラビア語" },
@@ -104,11 +101,12 @@ const countries = [
         { country: "ルワンダ", capital: "キガリ", language: "キニアルワンダ語" },
         { country: "レソト", capital: "マセル", language: "英語" },
 
-        // ヨーロッパ (44カ国)
+        // ヨーロッパ (45カ国)
         { country: "アイスランド", capital: "レイキャビク", language: "アイスランド語" },
         { country: "アイルランド", capital: "ダブリン", language: "英語" },
         { country: "アゼルバイジャン", capital: "バクー", language: "アゼルバイジャン語" },
         { country: "アルバニア", capital: "ティラナ", language: "アルバニア語" },
+        { country: "アルメニア", capital: "エレバン", language: "アルメニア語" },
         { country: "アンドラ", capital: "アンドラ・ラ・ベリャ", language: "カタルーニャ語" },
         { country: "イギリス", capital: "ロンドン", language: "英語" },
         { country: "イタリア", capital: "ローマ", language: "イタリア語" },
@@ -117,9 +115,9 @@ const countries = [
         { country: "オーストリア", capital: "ウィーン", language: "ドイツ語" },
         { country: "オランダ", capital: "アムステルダム", language: "オランダ語" },
         { country: "北マケドニア", capital: "スコピエ", language: "マケドニア語" },
-        { country: "キプロス", capital: "ニコシア", language: "ギリシャ語" },
         { country: "ギリシャ", capital: "アテネ", language: "ギリシャ語" },
         { country: "クロアチア", capital: "ザグレブ", language: "クロアチア語" },
+        { country: "ジョージア", capital: "トビリシ", language: "ジョージア語" },
         { country: "サンマリノ", capital: "サンマリノ", language: "イタリア語" },
         { country: "スイス", capital: "ベルン", language: "ドイツ語" },
         { country: "スウェーデン", capital: "ストックホルム", language: "スウェーデン語" },
@@ -131,6 +129,7 @@ const countries = [
         { country: "デンマーク", capital: "コペンハーゲン", language: "デンマーク語" },
         { country: "ドイツ", capital: "ベルリン", language: "ドイツ語" },
         { country: "ノルウェー", capital: "オスロ", language: "ノルウェー語" },
+        { country: "バチカン", capital: "バチカン", language: "ラテン語" },
         { country: "ハンガリー", capital: "ブダペスト", language: "ハンガリー語" },
         { country: "フィンランド", capital: "ヘルシンキ", language: "フィンランド語" },
         { country: "フランス", capital: "パリ", language: "フランス語" },

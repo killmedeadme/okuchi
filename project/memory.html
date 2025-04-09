@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>訪れた国の記録 - おくちのなか海外旅行部</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/memory.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>訪れた国の記録</h1>
+        <h2>VISITED COUNTRIES</h2>
+        <h2 class="sub-title">MEMORY</h2>
+        <div id="country-counter" class="country-counter">
+            訪れた国数: <span id="visited-count">0</span> / 193
+        </div>
+        <div class="search-container">
+            <input type="text" id="country-search" class="search-input" placeholder="国名を検索...">
+        </div>
+    </header>
+
+    <main>
+        <section id="countries-list">
+            <div class="country-grid">
+                <!-- 国のリストがここに動的に追加されます -->
+            </div>
+        </section>
+    </main>
+
+    <div class="fixed-bottom">
+        <div class="button-group">
+            <button type="button" id="close-button" class="close-button" onclick="window.location.href='index.html'">戻る</button>
+        </div>
+    </div>
+
+    <script src="js/countries.js"></script>
+    <script src="js/memory.js"></script>
+</body>
+</html> 

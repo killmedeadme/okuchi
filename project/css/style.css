@@ -82,7 +82,6 @@ main {
     justify-content: center;
     align-items: center;
     min-height: 100px;
-    flex-direction: column;
 }
 
 .roulette-button {
@@ -161,7 +160,7 @@ main {
 }
 
 #country-info h2 {
-    font-size: 1.5em; /* フォントサイズを小さくする */
+    font-size: 2.2rem;
     color: #2c3e50;
 }
 
@@ -232,17 +231,9 @@ main {
 /* ボタングループ */
 .button-group {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 1.5rem;
     margin-top: 2rem;
-}
-
-#save-button, .close-button {
-    width: 48%;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    font-size: 1.5rem; /* フォントサイズを大きくする */
 }
 
 .accept-button, .reject-button {
@@ -270,17 +261,6 @@ main {
 .reject-button {
     background: linear-gradient(45deg, #e74c3c, #c0392b);
     color: white;
-    border: none;
-    padding: 1rem 2rem;
-    border-radius: 50px;
-    cursor: pointer;
-    font-size: 1.2rem;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    min-width: 200px;
-    margin: 0 auto;
-    display: block;
 }
 
 .reject-button:hover {
@@ -430,177 +410,4 @@ main {
     outline: none;
     border-color: #FF6B6B;
     box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.2);
-}
-
-.modal {
-    display: flex; /* 表示時はフレックスボックスとして表示 */
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5); /* 背景を半透明に */
-    justify-content: center;
-    align-items: center;
-}
-
-/* hiddenクラスが付いた時の挙動を定義 */
-.modal.hidden {
-    display: none;
-}
-
-.modal-content {
-    max-height: 40vh; /* モーダルの最大高さを40%に設定 */
-    overflow-y: auto; /* 縦方向のオーバーフロー時にスクロールバーを表示 */
-    padding: 20px; /* 内側の余白を設定 */
-    background-color: white; /* 背景色を設定 */
-    border-radius: 8px; /* 角を丸くする */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 影を追加 */
-    position: relative;
-}
-
-/* スクロールバーのスタイル */
-.modal-content::-webkit-scrollbar {
-    width: 12px; /* スクロールバーの幅 */
-}
-
-.modal-content::-webkit-scrollbar-track {
-    background: #f1f1f1; /* スクロールバーのトラックの色 */
-    border-radius: 10px; /* トラックの角を丸く */
-}
-
-.modal-content::-webkit-scrollbar-thumb {
-    background: #3498db; /* スクロールバーのつまみの色 */
-    border-radius: 10px; /* つまみの角を丸く */
-}
-
-.modal-content::-webkit-scrollbar-thumb:hover {
-    background: #2980b9; /* ホバー時のつまみの色 */
-}
-
-/* 赤い丸のスタイル */
-.red-circle {
-    color: #ff0000;
-    font-size: 16px;
-    margin-right: 5px;
-}
-
-/* 訪問国数と総国数を表示する要素 */
-#count-summary {
-    margin: 15px 0;
-    font-size: 16px;
-    color: #2c3e50;
-    text-align: center;
-    font-weight: bold;
-}
-
-/* 保存ボタンと閉じるボタンのコンテナ */
-.modal-buttons {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
-
-/* モーダルを開くボタン */
-#open-modal-button {
-    background: linear-gradient(45deg, #e74c3c, #c0392b);
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    font-weight: bold;
-    text-transform: uppercase;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-#open-modal-button:hover {
-    background: linear-gradient(45deg, #c0392b, #e74c3c);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-}
-
-/* 保存ボタンのスタイル */
-#save-button {
-    background: linear-gradient(45deg, #3498db, #2980b9); /* 青色のグラデーション */
-    color: white; /* テキストの色 */
-    padding: 10px 20px; /* 内側の余白 */
-    border: none; /* ボーダーをなしに */
-    border-radius: 5px; /* 角を丸く */
-    cursor: pointer; /* カーソルをポインターに */
-    transition: background-color 0.3s; /* ホバー時のトランジション */
-}
-
-#save-button:hover {
-    background: linear-gradient(45deg, #2980b9, #3498db); /* ホバー時のグラデーション */
-}
-
-/* 閉じるボタンのスタイル */
-.close-button {
-    background: linear-gradient(45deg, #bdc3c7, #95a5a6); /* グレーのグラデーション */
-    color: white; /* テキストの色 */
-    padding: 10px 20px; /* 内側の余白 */
-    border: none; /* ボーダーをなしに */
-    border-radius: 5px; /* 角を丸く */
-    cursor: pointer; /* カーソルをポインターに */
-    transition: background-color 0.3s; /* ホバー時のトランジション */
-}
-
-.close-button:hover {
-    background: linear-gradient(45deg, #95a5a6, #bdc3c7); /* ホバー時のグラデーション */
-}
-
-.country-item {
-    display: flex; /* フレックスボックスを使用 */
-    justify-content: space-between; /* 国名と日付を左右に配置 */
-    align-items: center; /* 垂直方向の中央揃え */
-}
-
-.country-item input[type="date"] {
-    text-align: right; /* テキストを右寄せ */
-    width: 100%; /* 幅を100%に設定 */
-    max-width: 150px; /* 最大幅を設定（必要に応じて調整） */
-}
-
-.modal-content h2 {
-    text-align: center; /* センタリング */
-    font-weight: bold; /* 太字 */
-    font-size: 1.8rem; /* フォントサイズを調整 */
-    margin-bottom: 1rem; /* 下部に隙間を追加 */
-}
-
-/* ルーレットの回転アニメーション */
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-.roulette.spin {
-    animation: spin 3s ease-in-out; /* アニメーションの設定 */
-}
-
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-.calendar-icon {
-    margin-left: 5px; /* アイコンと国名の間にスペースを追加 */
-    color: #2c3e50; /* アイコンの色 */
-    text-decoration: none; /* リンクの下線を消す */
-}
-
-.calendar-icon:hover {
-    color: #FF6B6B; /* ホバー時の色 */
 } 

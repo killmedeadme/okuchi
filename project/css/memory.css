@@ -41,9 +41,13 @@
     display: flex;
     align-items: center;
     margin-bottom: 15px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #eee;
+    padding: 15px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     position: relative;
+    border-bottom: none;
 }
 
 .country-item.visited {
@@ -55,12 +59,15 @@
 }
 
 .visited-mark {
-    margin-right: 8px;
+    margin-right: 10px;
     flex-shrink: 0;
+    color: #ccc;
+    visibility: visible;
+    font-size: 1.2em;
 }
 
 .country-item.visited .visited-mark {
-    visibility: visible;
+    color: #ff0000;
 }
 
 .country-info {

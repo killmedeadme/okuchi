@@ -182,13 +182,39 @@ document.addEventListener('DOMContentLoaded', async function() {
                 </div>
                 <input type="date" class="visit-date" value="${visitDate}"
                        ${visitDate ? 'data-original-date="' + visitDate + '"' : ''}>
+                <button type="button" class="clear-date-button ${visitDate ? '' : 'hidden'}" title="日付をクリア">
+                    <i class="fas fa-times"></i>
+                </button>
             `;
 
-            // 日付変更イベントを追加
             const dateInput = item.querySelector('.visit-date');
 
+            // クリアボタンの処理
+            const clearButton = item.querySelector('.clear-date-button');
+            clearButton.addEventListener('click', async function(event) {
+                event.stopPropagation(); // 親要素へのイベント伝播を停止
+
+                // 日付入力欄を空にする
+                dateInput.value = '';
+                // 削除処理をGASに送信
+                console.log(`Clear button clicked for ${countryName}`);
+                const success = await saveVisitedCountryToGAS(countryName, null);
+
+                if (success) {
+                    item.remove(); // UIから項目を削除
+                } else {
+                    // 保存失敗時、日付を元に戻す (GAS側でアラート表示)
+                    // dateInput.value は既に空になっているので、元の日付を取得し直す必要がある
+                    // const originalDateForRestore = item.querySelector('.visit-date').getAttribute('data-original-date') || '';
+                    // dateInput.value = originalDateForRestore;
+                     alert('データの削除に失敗しました。'); // 簡略化したアラート
+                    // クリアボタンは表示されたままになるかもしれないが、リロードで解消される
+                }
+            });
+
+            // 日付入力(change)イベントリスナーを調整: クリアボタンの表示/非表示も制御
             dateInput.addEventListener('change', async function() {
-                const newDate = this.value; // 'yyyy-MM-dd' 形式または空文字 ''
+                const newDate = this.value;
                 const originalDate = this.getAttribute('data-original-date') || '';
 
                 // 値が変更されていない場合は何もしない
@@ -197,39 +223,42 @@ document.addEventListener('DOMContentLoaded', async function() {
                     return;
                 }
 
-                // 値が空になった場合 (リセット/クリア操作)
+                // 値が空になった場合 (リセット/クリア操作) - changeイベントでも検知するが、主にクリアボタンで処理
                 if (!newDate) {
                     // 元々日付があった場合のみ削除処理を実行
                     if (originalDate !== '') {
-                        console.log(`Change event: Date cleared for ${countryName}`);
-                        const success = await saveVisitedCountryToGAS(countryName, null); // nullを渡して削除
+                        console.log(`Change event: Date might have been cleared for ${countryName}`);
+                        const success = await saveVisitedCountryToGAS(countryName, null);
 
                         if (success) {
-                            item.remove(); // UIから項目を削除
+                            item.remove();
                         } else {
-                            // 保存失敗時は値を元に戻す（アラートはGAS側で出る）
-                            // スマホでの挙動を考慮し、失敗時に値を戻すか検討が必要だが、一旦戻す実装にする
                             this.value = originalDate;
-                             alert('データの削除に失敗したため、日付を元に戻しました。'); // 念のためこちらでもアラート
+                            alert('データの削除に失敗したため、日付を元に戻しました。');
+                            clearButton.classList.remove('hidden'); // 失敗時はクリアボタンを再表示
                         }
                     } else {
-                        // 元々空で、空のままchangeイベントが発火した場合 (通常は考えにくい)
                         console.log(`Change event: Date remains empty for ${countryName}`);
+                        clearButton.classList.add('hidden'); // 日付がないのでクリアボタンを隠す
                     }
                 }
-                // 新しい日付が設定された場合 (空文字ではない)
+                // 新しい日付が設定された場合
                 else {
                     console.log(`Change event: Date changed for ${countryName} to ${newDate}`);
                     const success = await saveVisitedCountryToGAS(countryName, newDate);
 
                     if (success) {
-                        // GASへの保存が成功した後にUIを更新
                         item.classList.add('visited');
                         this.setAttribute('data-original-date', newDate);
+                        clearButton.classList.remove('hidden'); // 日付があるのでクリアボタンを表示
                     } else {
-                        // 保存失敗時はUIを元に戻す
-                        this.value = originalDate; // 値を入力前の状態に戻す
-                        // alert は saveVisitedCountryToGAS 内で表示される
+                        this.value = originalDate;
+                        // 保存失敗時、クリアボタンの状態は originalDate に依存する
+                        if(originalDate) {
+                            clearButton.classList.remove('hidden');
+                        } else {
+                            clearButton.classList.add('hidden');
+                        }
                     }
                 }
             });

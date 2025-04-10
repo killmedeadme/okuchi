@@ -40,12 +40,10 @@
 .country-item {
     display: flex;
     align-items: center;
-    padding: 10px;
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    transition: background-color 0.3s;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    position: relative;
 }
 
 .country-item.visited {
@@ -57,10 +55,8 @@
 }
 
 .visited-mark {
-    color: #ff0000;
-    margin-right: 10px;
-    font-size: 1.2em;
-    visibility: hidden;
+    margin-right: 8px;
+    flex-shrink: 0;
 }
 
 .country-item.visited .visited-mark {
@@ -69,6 +65,10 @@
 
 .country-info {
     flex-grow: 1;
+    margin-right: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .country-name {
@@ -82,11 +82,11 @@
 }
 
 .visit-date {
-    width: 120px;
+    margin-right: 5px;
     padding: 5px;
-    border: 1px solid #ddd;
+    border: 1px solid #ccc;
     border-radius: 4px;
-    margin-left: 10px;
+    flex-shrink: 0;
 }
 
 .fixed-bottom {
@@ -230,4 +230,28 @@
 .header-icon {
     margin-right: 10px;
     color: #555;
+}
+
+/* クリアボタンのスタイル */
+.clear-date-button {
+    background: none;
+    border: none;
+    color: #aaa;
+    cursor: pointer;
+    padding: 0 5px;
+    font-size: 1em;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s;
+    flex-shrink: 0;
+}
+
+.clear-date-button:hover {
+    color: #f44336;
+}
+
+.clear-date-button.hidden {
+    display: none;
 } 

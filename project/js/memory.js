@@ -187,44 +187,39 @@ document.addEventListener('DOMContentLoaded', async function() {
             // 日付変更イベントを追加
             const dateInput = item.querySelector('.visit-date');
 
-            // inputイベント: 値が変更されるたび (特にクリア操作を検知するため)
-            dateInput.addEventListener('input', async function() {
-                const currentDate = this.value;
-                const originalDate = this.getAttribute('data-original-date') || '';
-
-                // 値が空になり、元々は日付が入っていた場合 (クリア操作)
-                if (currentDate === '' && originalDate !== '') {
-                    console.log(`Input event: Date cleared for ${countryName}`); // ログ追加
-                    const success = await saveVisitedCountryToGAS(countryName, null); // nullを渡して削除
-
-                    if (success) {
-                        item.remove(); // UIから項目を削除
-                    } else {
-                        // 保存失敗時: GAS側でalertが出るのでここでは何もしない
-                        // 値を元に戻すと操作性が悪くなる可能性があるので、ここでは戻さない
-                    }
-                }
-            });
-
-            // changeイベント: 値の変更が確定したとき (主に日付が選択されたとき)
             dateInput.addEventListener('change', async function() {
-                const newDate = this.value; // yyyy-MM-dd 形式のはず
+                const newDate = this.value; // 'yyyy-MM-dd' 形式または空文字 ''
                 const originalDate = this.getAttribute('data-original-date') || '';
 
-                // 値が空の場合はinputイベントで処理するので、ここでは何もしない
-                if (!newDate) {
-                    console.log(`Change event: Date is empty, handled by input event.`); // ログ追加
-                    // もしinputイベントで拾いきれない場合を考慮し、ここでも削除処理を入れる選択肢もあるが、一旦inputに任せる
-                    // if (originalDate !== '') { // 元々日付があった場合のみ
-                    //     const success = await saveVisitedCountryToGAS(countryName, null);
-                    //     if (success) item.remove();
-                    // }
+                // 値が変更されていない場合は何もしない
+                if (newDate === originalDate) {
+                    console.log(`Change event: Date not changed for ${countryName}`);
                     return;
                 }
 
-                // 値が変更された場合 (新規選択または日付変更)
-                if (newDate !== originalDate) {
-                    console.log(`Change event: Date changed for ${countryName} to ${newDate}`); // ログ追加
+                // 値が空になった場合 (リセット/クリア操作)
+                if (!newDate) {
+                    // 元々日付があった場合のみ削除処理を実行
+                    if (originalDate !== '') {
+                        console.log(`Change event: Date cleared for ${countryName}`);
+                        const success = await saveVisitedCountryToGAS(countryName, null); // nullを渡して削除
+
+                        if (success) {
+                            item.remove(); // UIから項目を削除
+                        } else {
+                            // 保存失敗時は値を元に戻す（アラートはGAS側で出る）
+                            // スマホでの挙動を考慮し、失敗時に値を戻すか検討が必要だが、一旦戻す実装にする
+                            this.value = originalDate;
+                             alert('データの削除に失敗したため、日付を元に戻しました。'); // 念のためこちらでもアラート
+                        }
+                    } else {
+                        // 元々空で、空のままchangeイベントが発火した場合 (通常は考えにくい)
+                        console.log(`Change event: Date remains empty for ${countryName}`);
+                    }
+                }
+                // 新しい日付が設定された場合 (空文字ではない)
+                else {
+                    console.log(`Change event: Date changed for ${countryName} to ${newDate}`);
                     const success = await saveVisitedCountryToGAS(countryName, newDate);
 
                     if (success) {
@@ -236,8 +231,6 @@ document.addEventListener('DOMContentLoaded', async function() {
                         this.value = originalDate; // 値を入力前の状態に戻す
                         // alert は saveVisitedCountryToGAS 内で表示される
                     }
-                } else {
-                     console.log(`Change event: Date not changed for ${countryName}`); // ログ追加
                 }
             });
 
